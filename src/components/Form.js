@@ -16,6 +16,7 @@ class Form extends React.Component {
             type="text"
             value={ cardName }
             onChange={ onInputChange }
+            name="name"
           />
         </label>
         <label htmlFor="description-input">
@@ -26,6 +27,7 @@ class Form extends React.Component {
             type="text"
             value={ cardDescription }
             onChange={ onInputChange }
+            name="description"
           />
         </label>
         <label htmlFor="attr1-input">
@@ -36,6 +38,7 @@ class Form extends React.Component {
             type="number"
             value={ cardAttr1 }
             onChange={ onInputChange }
+            name="attr1"
           />
         </label>
         <label htmlFor="attr2-input">
@@ -46,6 +49,7 @@ class Form extends React.Component {
             type="number"
             value={ cardAttr2 }
             onChange={ onInputChange }
+            name="attr2"
           />
         </label>
         <label htmlFor="attr3-input">
@@ -56,6 +60,7 @@ class Form extends React.Component {
             type="number"
             value={ cardAttr3 }
             onChange={ onInputChange }
+            name="attr3"
           />
         </label>
         <label htmlFor="image-input">
@@ -66,6 +71,7 @@ class Form extends React.Component {
             type="text"
             value={ cardImage }
             onChange={ onInputChange }
+            name="image"
           />
         </label>
         <label htmlFor="rare-input">
@@ -75,6 +81,7 @@ class Form extends React.Component {
             data-testid="rare-input"
             value={ cardRare }
             onChange={ onInputChange }
+            name="rare"
           >
             <option name="normal" value="normal">Normal</option>
             <option name="raro" value="raro">Raro</option>
@@ -89,6 +96,7 @@ class Form extends React.Component {
             type="checkbox"
             checked={ cardTrunfo }
             onChange={ onInputChange }
+            name="trunfo"
           />
         </label>
         <button
