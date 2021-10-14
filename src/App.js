@@ -30,53 +30,43 @@ class App extends React.Component {
     }, this.formsValidation);
   }
 
-  formsValidation() {
-    const { nameCard, description, image, attr1, attr2, attr3 } = this.state;
-    const Attr1 = Number(attr1);
-    const Attr2 = Number(attr2);
-    const Attr3 = Number(attr3);
+  validation(attributes, inputs) {
+    const attrs = attributes.map((attribute) => Number(attribute));
+    let validation;
     const maxTotalAttr = 210;
+    let totalAttr = attrs[0] + attrs[1] + attrs[2];
     const maxAttr = 90;
     const minAttr = 0;
-    const totalAttr = (Attr1 + Attr2 + Attr3);
-    let validation = false;
-    if (nameCard) {
+
+    if (inputs[0] && inputs[1] && inputs[2]) {
       validation = false;
-      if (description) {
-        validation = false;
-        if (!image) {
-          validation = true;
-        } else {
-          validation = false;
-          if (Attr1 <= maxAttr && Attr1 >= minAttr) {
-            validation = false;
-            if (Attr2 <= maxAttr && Attr2 >= minAttr) {
-              validation = false;
-              if (Attr3 <= maxAttr && Attr3 >= minAttr) {
-                validation = false;
-                if (totalAttr <= maxTotalAttr) {
-                  validation = false;
-                } else {
-                  validation = true;
-                }
-              } else {
-                validation = true;
-              }
-            } else {
-              validation = true;
-            }
-          } else {
-            validation = true;
-          }
-        }
-      } else {
-        validation = true;
-      }
     } else {
-      validation = true;
+      return true;
     }
+
+    if (totalAttr <= maxTotalAttr) {
+      validation = false;
+    } else {
+      return true;
+    }
+
+    attrs.forEach((attr) => {
+      totalAttr += attr;
+      if (attr >= minAttr && attr <= maxAttr) {
+        return false;
+      }
+      validation = true;
+    });
+
+    return validation;
+  }
+
+  formsValidation() {
+    const { nameCard, description, image, attr1, attr2, attr3 } = this.state;
+    const attributes = [attr1, attr2, attr3];
+    const inputs = [nameCard, description, image];
     this.setState({
-      isSaveButtonDisabled: validation,
+      isSaveButtonDisabled: this.validation(attributes, inputs),
     });
   }
 
