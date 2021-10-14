@@ -87,13 +87,7 @@ class App extends React.Component {
   }
 
   checkHasTrunfo() {
-    const { cards } = this.state;
-    if (cards.some((card) => card.trunfo)) {
-      return this.setState({
-        hasTrunfo: true,
-      });
-    }
-    return this.setState({
+    this.setState({
       hasTrunfo: false,
     });
   }
@@ -170,7 +164,7 @@ class App extends React.Component {
             cardTrunfo={ trunfo }
           />
         </div>
-        <ListCard cards={ cards } />
+        <ListCard cards={ cards } checkHasTrunfo={ this.checkHasTrunfo } />
       </main>
     );
   }
