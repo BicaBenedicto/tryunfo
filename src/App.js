@@ -17,10 +17,12 @@ class App extends React.Component {
       trunfo: false,
       hasTrunfo: false,
       isSaveButtonDisabled: true,
+      cards: [],
     };
 
     this.onInputChange = this.onInputChange.bind(this);
     this.formsValidation = this.formsValidation.bind(this);
+    this.onSaveButtonClick = this.onSaveButtonClick.bind(this);
   }
 
   onInputChange({ target }) {
@@ -28,6 +30,35 @@ class App extends React.Component {
     this.setState({
       [name]: (type === 'checkbox' ? checked : value),
     }, this.formsValidation);
+  }
+
+  onSaveButtonClick(event) {
+    event.preventDefault();
+    const { nameCard, description, image, attr1,
+      attr2, attr3, rare, trunfo } = this.state;
+    this.setState((beforeState) => ({
+      cards: [...beforeState.cards, {
+        nameCard,
+        description,
+        image,
+        attr1,
+        attr2,
+        attr3,
+        rare,
+        trunfo,
+      }],
+    }), this.setState({
+      nameCard: '',
+      description: '',
+      image: '',
+      attr1: 0,
+      attr2: 0,
+      attr3: 0,
+      rare: 'normal',
+      trunfo: false,
+      hasTrunfo: false,
+      isSaveButtonDisabled: true,
+    }));
   }
 
   validation(attributes, inputs) {
@@ -88,6 +119,7 @@ class App extends React.Component {
           hasTrunfo={ hasTrunfo }
           isSaveButtonDisabled={ isSaveButtonDisabled }
           onInputChange={ this.onInputChange }
+          onSaveButtonClick={ this.onSaveButtonClick }
         />
         <Card
           cardName={ nameCard }
