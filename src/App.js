@@ -1,6 +1,7 @@
 import React from 'react';
 import Form from './components/Form';
 import Card from './components/Card';
+import ListCard from './components/ListCard';
 
 class App extends React.Component {
   constructor() {
@@ -139,35 +140,38 @@ class App extends React.Component {
 
   render() {
     const { nameCard, description, image, attr1, attr2, attr3, rare,
-      trunfo, hasTrunfo, isSaveButtonDisabled } = this.state;
+      trunfo, hasTrunfo, isSaveButtonDisabled, cards } = this.state;
     return (
-      <div>
-        <h1>Tryunfo</h1>
-        <Form
-          cardName={ nameCard }
-          cardDescription={ description }
-          cardImage={ image }
-          cardAttr1={ attr1 }
-          cardAttr2={ attr2 }
-          cardAttr3={ attr3 }
-          cardRare={ rare }
-          cardTrunfo={ trunfo }
-          hasTrunfo={ hasTrunfo }
-          isSaveButtonDisabled={ isSaveButtonDisabled }
-          onInputChange={ this.onInputChange }
-          onSaveButtonClick={ this.onSaveButtonClick }
-        />
-        <Card
-          cardName={ nameCard }
-          cardDescription={ description }
-          cardImage={ image }
-          cardAttr1={ attr1 }
-          cardAttr2={ attr2 }
-          cardAttr3={ attr3 }
-          cardRare={ rare }
-          cardTrunfo={ trunfo }
-        />
-      </div>
+      <main>
+        <div>
+          <h1>Tryunfo</h1>
+          <Form
+            cardName={ nameCard }
+            cardDescription={ description }
+            cardImage={ image }
+            cardAttr1={ attr1 }
+            cardAttr2={ attr2 }
+            cardAttr3={ attr3 }
+            cardRare={ rare }
+            cardTrunfo={ trunfo }
+            hasTrunfo={ hasTrunfo }
+            isSaveButtonDisabled={ isSaveButtonDisabled }
+            onInputChange={ this.onInputChange }
+            onSaveButtonClick={ this.onSaveButtonClick }
+          />
+          <Card
+            cardName={ nameCard }
+            cardDescription={ description }
+            cardImage={ image }
+            cardAttr1={ attr1 }
+            cardAttr2={ attr2 }
+            cardAttr3={ attr3 }
+            cardRare={ rare }
+            cardTrunfo={ trunfo }
+          />
+        </div>
+        <ListCard cards={ cards } />
+      </main>
     );
   }
 }
