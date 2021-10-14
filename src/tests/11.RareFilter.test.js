@@ -4,13 +4,13 @@ import userEvent from '@testing-library/user-event'
 import App from '../App';
 
 describe("11 - Crie o filtro por raridade da carta", () => {
-  it.skip("Será validado se o campo de filtro por Raridade renderiza na tela", () => {
+  it("Será validado se o campo de filtro por Raridade renderiza na tela", () => {
     render(<App />);
     const filterNameInput = screen.getByTestId(/rare-filter/i);
     expect(filterNameInput).toBeInTheDocument();
   });
 
-  it.skip("Será validado se somente as cartas com raridade `normal` são exibidas após o filtro", () => {
+  it("Será validado se somente as cartas com raridade `normal` são exibidas após o filtro", () => {
     render(<App />);
 
     const checkboxTrunfo = screen.getByTestId(/trunfo-input/i);
@@ -64,7 +64,7 @@ describe("11 - Crie o filtro por raridade da carta", () => {
     expect(screen.queryByText("Carta 2 - Carro do ovo")).not.toBeInTheDocument();
   });
 
-  it.skip("Será validado se somente as cartas com raridade `raro` são exibidas após o filtro", () => {
+  it("Será validado se somente as cartas com raridade `raro` são exibidas após o filtro", () => {
     render(<App />);
 
     const checkboxTrunfo = screen.getByTestId(/trunfo-input/i);
@@ -116,7 +116,7 @@ describe("11 - Crie o filtro por raridade da carta", () => {
     expect(screen.queryByText("Carta 3 - Van de transporte")).not.toBeInTheDocument();
   });
 
-  it.skip("Será validado se somente as cartas com raridade `muito raro` são exibidas após o filtro", () => {
+  it("Será validado se somente as cartas com raridade `muito raro` são exibidas após o filtro", () => {
     render(<App />);
 
     const checkboxTrunfo = screen.getByTestId(/trunfo-input/i);
@@ -170,7 +170,7 @@ describe("11 - Crie o filtro por raridade da carta", () => {
     expect(screen.queryByText("Carta 3 - Van de transporte")).not.toBeInTheDocument();
   });
 
-  it.skip("Será validado se todas cartas são exibidas quando o filtro de raridade está com a opção `todas` selecionada", () => {
+  it("Será validado se todas cartas são exibidas quando o filtro de raridade está com a opção `todas` selecionada", () => {
     render(<App />);
 
     const checkboxTrunfo = screen.getByTestId(/trunfo-input/i);
@@ -225,7 +225,7 @@ describe("11 - Crie o filtro por raridade da carta", () => {
     expect(screen.getByText("Carta 3 - Van de transporte")).toBeInTheDocument();
   });
 
-  it.skip("Será validado se não renderiza nenhuma carta se não houver raridade correspondente", () => {
+  it("Será validado se não renderiza nenhuma carta se não houver raridade correspondente", () => {
     render(<App />);
 
     const checkboxTrunfo = screen.getByTestId(/trunfo-input/i);

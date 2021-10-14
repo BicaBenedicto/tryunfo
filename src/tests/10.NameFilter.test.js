@@ -4,13 +4,13 @@ import userEvent from '@testing-library/user-event'
 import App from '../App';
 
 describe("10 - Crie o filtro pelo nome da carta", () => {
-  it.skip("Será validado se o campo de filtro por nome renderiza na tela", () => {
+  it("Será validado se o campo de filtro por nome renderiza na tela", () => {
     render(<App />)
     const filterNameInput = screen.getByTestId(/name-filter/i);
     expect(filterNameInput).toBeInTheDocument();
   });
 
-  it.skip("Será validado apenas as cartas correspondentes aparecem após o filtro",  () => {
+  it("Será validado apenas as cartas correspondentes aparecem após o filtro",  () => {
     render(<App />)
     const checkboxTrunfo = screen.getByTestId(/trunfo-input/i);
     const nameInput = screen.getByTestId(/name-input/i);
@@ -67,7 +67,7 @@ describe("10 - Crie o filtro pelo nome da carta", () => {
     expect(screen.queryByText("Carta 3 - Fonte natural")).not.toBeInTheDocument();
   });
 
-  it.skip("Será validado se não renderiza nenhuma carta se não houver nome correspondente", () => {
+  it("Será validado se não renderiza nenhuma carta se não houver nome correspondente", () => {
     render(<App />)
     const checkboxTrunfo = screen.getByTestId(/trunfo-input/i);
     const nameInput = screen.getByTestId(/name-input/i);
