@@ -23,6 +23,7 @@ class App extends React.Component {
     this.onInputChange = this.onInputChange.bind(this);
     this.formsValidation = this.formsValidation.bind(this);
     this.onSaveButtonClick = this.onSaveButtonClick.bind(this);
+    this.checkHasTrunfo = this.checkHasTrunfo.bind(this);
   }
 
   onInputChange({ target }) {
@@ -36,29 +37,64 @@ class App extends React.Component {
     event.preventDefault();
     const { nameCard, description, image, attr1,
       attr2, attr3, rare, trunfo } = this.state;
-    this.setState((beforeState) => ({
-      cards: [...beforeState.cards, {
-        nameCard,
-        description,
-        image,
-        attr1,
-        attr2,
-        attr3,
-        rare,
-        trunfo,
-      }],
-    }), this.setState({
-      nameCard: '',
-      description: '',
-      image: '',
-      attr1: 0,
-      attr2: 0,
-      attr3: 0,
-      rare: 'normal',
-      trunfo: false,
+    if (trunfo) {
+      this.setState((beforeState) => ({
+        nameCard: '',
+        description: '',
+        image: '',
+        attr1: 0,
+        attr2: 0,
+        attr3: 0,
+        rare: 'normal',
+        trunfo: false,
+        hasTrunfo: true,
+        isSaveButtonDisabled: true,
+        cards: [...beforeState.cards, {
+          nameCard,
+          description,
+          image,
+          attr1,
+          attr2,
+          attr3,
+          rare,
+          trunfo,
+        }],
+      }));
+    } else {
+      this.setState((beforeState) => ({
+        nameCard: '',
+        description: '',
+        image: '',
+        attr1: 0,
+        attr2: 0,
+        attr3: 0,
+        rare: 'normal',
+        trunfo: false,
+        isSaveButtonDisabled: true,
+        cards: [...beforeState.cards, {
+          nameCard,
+          description,
+          image,
+          attr1,
+          attr2,
+          attr3,
+          rare,
+          trunfo,
+        }],
+      }));
+    }
+  }
+
+  checkHasTrunfo() {
+    const { cards } = this.state;
+    if (cards.some((card) => card.trunfo)) {
+      return this.setState({
+        hasTrunfo: true,
+      });
+    }
+    return this.setState({
       hasTrunfo: false,
-      isSaveButtonDisabled: true,
-    }));
+    });
   }
 
   validation(attributes, inputs) {
