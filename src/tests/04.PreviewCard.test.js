@@ -4,7 +4,7 @@ import userEvent from '@testing-library/user-event'
 import App from '../App';
 
 describe("4 - Crie o preview da carta que está sendo criada pelo formulário", () => {
-  it.skip("Será validado se é renderizado no preview da carta o valor digitado no input Nome do formulário", () => {
+  it("Será validado se é renderizado no preview da carta o valor digitado no input Nome do formulário", () => {
     render(<App />);
     const nameInput = screen.getByTestId(/name-input/i);
     userEvent.type(nameInput, 'Carta 1 - Escavadeira Dupla');
@@ -12,7 +12,7 @@ describe("4 - Crie o preview da carta que está sendo criada pelo formulário", 
     expect(namePreview).toHaveTextContent('Carta 1 - Escavadeira Dupla');
   });
 
-  it.skip("Será validado se é renderizado no preview da carta o valor digitado no input Descrição do formulário", () => {
+  it("Será validado se é renderizado no preview da carta o valor digitado no input Descrição do formulário", () => {
     render(<App />);
     const descInput = screen.getByTestId(/description-input/i);
     userEvent.type(descInput, 'Uma simples escavadeira');
@@ -20,7 +20,7 @@ describe("4 - Crie o preview da carta que está sendo criada pelo formulário", 
     expect(descPreview).toHaveTextContent('Uma simples escavadeira');
   });
 
-  it.skip("Será validado se é renderizado no preview da carta o valor digitado no input referente ao atributo 1 no formulário", () => {
+  it("Será validado se é renderizado no preview da carta o valor digitado no input referente ao atributo 1 no formulário", () => {
     render(<App />);
     const attr1Input = screen.getByTestId(/attr1-input/i);
     userEvent.type(attr1Input, '90');
@@ -28,7 +28,7 @@ describe("4 - Crie o preview da carta que está sendo criada pelo formulário", 
     expect(attr1Preview).toHaveTextContent('90')
   });
 
-  it.skip("Será validado se é renderizado no preview da carta o valor digitado no input referente ao atributo 2 no formulário", () => {
+  it("Será validado se é renderizado no preview da carta o valor digitado no input referente ao atributo 2 no formulário", () => {
     render(<App />);
     const attr2Input = screen.getByTestId(/attr2-input/i);
     userEvent.type(attr2Input, '90');
@@ -36,7 +36,7 @@ describe("4 - Crie o preview da carta que está sendo criada pelo formulário", 
     expect(attr2Preview).toHaveTextContent('90')
   });
 
-  it.skip("Será validado se é renderizado no preview da carta o valor digitado no input referente ao atributo 3 no formulário", () => {
+  it("Será validado se é renderizado no preview da carta o valor digitado no input referente ao atributo 3 no formulário", () => {
     render(<App />);
     const attr3Input = screen.getByTestId(/attr3-input/i);
     userEvent.type(attr3Input, '30');
@@ -44,7 +44,7 @@ describe("4 - Crie o preview da carta que está sendo criada pelo formulário", 
     expect(attr3Preview).toHaveTextContent('30')
   });
 
-  it.skip("Será validado se é renderizado no preview da carta o `data-testid='trunfo-card'` se o checkbox Super Trunfo for selecionado", () => {
+  it("Será validado se é renderizado no preview da carta o `data-testid='trunfo-card'` se o checkbox Super Trunfo for selecionado", () => {
     render(<App />);
     const trunfoInput = screen.getByTestId(/trunfo-input/i);
     userEvent.click(trunfoInput);

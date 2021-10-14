@@ -12,6 +12,7 @@ class ListCard extends React.Component {
     };
     this.removeButton = this.removeButton.bind(this);
     this.handleFilterChange = this.handleFilterChange.bind(this);
+    this.hasTrunfo = this.hasTrunfo.bind(this);
   }
 
   handleFilterChange(event) {
@@ -26,6 +27,20 @@ class ListCard extends React.Component {
     checkHasTrunfo();
   }
 
+  hasTrunfo() {
+    const { trunfo } = this.state;
+
+    if (trunfo) {
+      this.setState({
+        trunfo: false,
+      });
+    } else {
+      this.setState({
+        trunfo: true,
+      });
+    }
+  }
+
   render() {
     const { cards } = this.props;
     const { filter, trunfo } = this.state;
@@ -38,17 +53,25 @@ class ListCard extends React.Component {
             className="filter"
             placeholder="Nome carta"
             onChange={ this.handleFilterChange }
+            disabled={ trunfo }
           />
           <select
             data-testid="rare-filter"
             className="filter"
             onChange={ this.handleFilterChange }
+            disabled={ trunfo }
           >
             <option value="todas">Todas</option>
             <option value="normal">Normal</option>
             <option value="raro">Raro</option>
             <option value="muito raro">Muito Raro</option>
           </select>
+          <input
+            data-testid="trunfo-filter"
+            className="filter"
+            type="checkbox"
+            onClick={ this.hasTrunfo }
+          />
         </div>
         { (filter !== 'todas')
           ? (cards.filter((card) => (card.nameCard.includes(filter)

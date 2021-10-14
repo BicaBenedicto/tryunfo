@@ -4,7 +4,7 @@ import userEvent from '@testing-library/user-event'
 import App from '../App';
 
 describe("6 - Crie a função do botão salvar", () => {
-  it.skip("Será validado se os campos do formulário `Nome`, `Descrição` e `Imagem` são limpos após clicar em `salvar`", () => {
+  it("Será validado se os campos do formulário `Nome`, `Descrição` e `Imagem` são limpos após clicar em `salvar`", () => {
     render(<App />);
     const nameInput = screen.getByTestId(/name-input/i);
     const descInput = screen.getByTestId(/description-input/i);
@@ -31,7 +31,7 @@ describe("6 - Crie a função do botão salvar", () => {
     expect(imgInput).toHaveValue('');
   });
 
-  it.skip("Será validado se o os três campos de atributos tem o valor `0` após clicar em `salvar`", () => {
+  it("Será validado se o os três campos de atributos tem o valor `0` após clicar em `salvar`", () => {
     render(<App />);
     const nameInput = screen.getByTestId(/name-input/i);
     const descInput = screen.getByTestId(/description-input/i);
@@ -58,7 +58,7 @@ describe("6 - Crie a função do botão salvar", () => {
     expect(attr3Input).toHaveValue(0);
   });
 
-  it.skip("Será validado se o campo de `Raridade` tem o valor `normal` após clicar em `salvar`", () => {
+  it("Será validado se o campo de `Raridade` tem o valor `normal` após clicar em `salvar`", () => {
     render(<App />);
     const nameInput = screen.getByTestId(/name-input/i);
     const descInput = screen.getByTestId(/description-input/i);
