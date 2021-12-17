@@ -136,9 +136,16 @@ class App extends React.Component {
     const { nameCard, description, image, attr1, attr2, attr3, rare,
       trunfo, hasTrunfo, isSaveButtonDisabled, cards } = this.state;
     return (
-      <main>
-        <div>
-          <h1>Tryunfo</h1>
+      <main className='battle-no-effect'>
+        <header className='battle'>
+            <canvas id="can"></canvas>
+            <canvas id="can2"></canvas>
+            <canvas id="can3"></canvas>
+            <canvas id="can4"></canvas>
+            <div id="pupa"></div>
+            <h1 className='glow font-bold text-white text-center text-5xl py-5'>Tryunfo</h1>
+        </header>
+        <div className='flex flex-row justify-around align-middle'>  
           <Form
             cardName={ nameCard }
             cardDescription={ description }

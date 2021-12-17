@@ -41,23 +41,48 @@ class ListCard extends React.Component {
     }
   }
 
+  cardsRender(card) {
+    return (
+      <div key={ card.nameCard } className="">
+        <Card
+          cardName={ card.nameCard }
+          cardDescription={ card.description }
+          cardImage={ card.image }
+          cardAttr1={ card.attr1 }
+          cardAttr2={ card.attr2 }
+          cardAttr3={ card.attr3 }
+          cardRare={ card.rare }
+          cardTrunfo={ card.trunfo }
+        />
+        <button
+          data-testid="delete-button"
+          className="delete-button"
+          type="button"
+          onClick={ this.removeButton }
+        >
+          Excluir carta
+        </button>
+      </div>
+    )
+  }
+
   render() {
     const { cards } = this.props;
     const { filter, trunfo } = this.state;
     console.log(cards);
     return (
-      <section className="list-card">
-        <div className="list-filter">
+      <section className="list-card flex flex-col align-middle">
+        <div className="list-filter mx-auto">
           <input
             data-testid="name-filter"
-            className="filter"
+            className="filter rounded-xl py-2 px-3"
             placeholder="Nome carta"
             onChange={ this.handleFilterChange }
             disabled={ trunfo }
           />
           <select
             data-testid="rare-filter"
-            className="filter"
+            className="filter rounded-xl py-2 px-3 mx-3"
             onChange={ this.handleFilterChange }
             disabled={ trunfo }
           >
@@ -66,63 +91,30 @@ class ListCard extends React.Component {
             <option value="raro">Raro</option>
             <option value="muito raro">Muito Raro</option>
           </select>
-          <input
-            data-testid="trunfo-filter"
-            className="filter"
-            type="checkbox"
-            onClick={ this.hasTrunfo }
-          />
+          <label className='text-white'>
+            Trunfo
+            <input
+              data-testid="trunfo-filter"
+              className="filter mx-3"
+              type="checkbox"
+              onClick={ this.hasTrunfo }
+            />
+          </label>
         </div>
-        { (filter !== 'todas')
-          ? (cards.filter((card) => (card.nameCard.includes(filter)
-            || card.rare === filter))
-            .map((card) => (
-              <div key={ card.nameCard } className="card">
-                <Card
-                  cardName={ card.nameCard }
-                  cardDescription={ card.description }
-                  cardImage={ card.image }
-                  cardAttr1={ card.attr1 }
-                  cardAttr2={ card.attr2 }
-                  cardAttr3={ card.attr3 }
-                  cardRare={ card.rare }
-                  cardTrunfo={ card.trunfo }
-                />
-                <button
-                  data-testid="delete-button"
-                  className="delete-button"
-                  type="button"
-                  onClick={ this.removeButton }
-                >
-                  Excluir carta
-                </button>
-              </div>
-            )))
-          : (cards.filter((card) => {
-            if (trunfo) return card.trunfo === trunfo;
-            return card;
-          }).map((card) => (
-            <div key={ card.nameCard } className="card">
-              <Card
-                cardName={ card.nameCard }
-                cardDescription={ card.description }
-                cardImage={ card.image }
-                cardAttr1={ card.attr1 }
-                cardAttr2={ card.attr2 }
-                cardAttr3={ card.attr3 }
-                cardRare={ card.rare }
-                cardTrunfo={ card.trunfo }
-              />
-              <button
-                data-testid="delete-button"
-                className="delete-button"
-                type="button"
-                onClick={ this.removeButton }
-              >
-                Excluir carta
-              </button>
-            </div>
-          )))}
+        <div className='flex flex-row flex-wrap'>
+          { (filter !== 'todas')
+            ? (cards.filter((card) => (card.nameCard.includes(filter)
+              || card.rare === filter))
+              .map((card) => (
+                this.cardsRender(card)
+              )))
+            : (cards.filter((card) => {
+              if (trunfo) return card.trunfo === trunfo;
+              return card;
+            }).map((card) => (
+              this.cardsRender(card)
+            )))}
+        </div>
       </section>
     );
   }

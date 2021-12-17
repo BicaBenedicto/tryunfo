@@ -8,8 +8,8 @@ class Form extends React.Component {
       cardAttr2, cardAttr3, cardImage, cardRare, cardTrunfo,
       isSaveButtonDisabled, onInputChange, onSaveButtonClick, hasTrunfo } = this.props;
     return (
-      <form>
-        <label htmlFor="name-input">
+      <form className='m-10 p-10 bg-green-300 flex flex-col align-middle rounded-3xl shadow-2xl justify-around'>
+        <label htmlFor="name-input" className='p-3 flex flex-col'>
           Nome:
           <input
             id="name-input"
@@ -18,9 +18,10 @@ class Form extends React.Component {
             value={ cardName }
             onChange={ onInputChange }
             name="nameCard"
+            className='m-2 rounded-lg'
           />
         </label>
-        <label htmlFor="description-input">
+        <label htmlFor="description-input" className='p-3 flex flex-col'>
           Descrição:
           <textarea
             id="description-input"
@@ -29,48 +30,54 @@ class Form extends React.Component {
             value={ cardDescription }
             onChange={ onInputChange }
             name="description"
+            className='m-2 rounded-lg'
           />
         </label>
-        <label htmlFor="attr1-input">
-          Atributo1:
-          <input
-            id="attr1-input"
-            data-testid="attr1-input"
-            type="number"
-            value={ cardAttr1 }
-            onChange={ onInputChange }
-            name="attr1"
-            min="0"
-            max="90"
-          />
-        </label>
-        <label htmlFor="attr2-input">
-          Atributo2:
-          <input
-            id="attr2-input"
-            data-testid="attr2-input"
-            type="number"
-            value={ cardAttr2 }
-            onChange={ onInputChange }
-            name="attr2"
-            min="0"
-            max="90"
-          />
-        </label>
-        <label htmlFor="attr3-input">
-          Atributo3:
-          <input
-            id="attr3-input"
-            data-testid="attr3-input"
-            type="number"
-            value={ cardAttr3 }
-            onChange={ onInputChange }
-            name="attr3"
-            min="0"
-            max="90"
-          />
-        </label>
-        <label htmlFor="image-input">
+        <div className='p-3 flex flex-row'>
+          <label htmlFor="attr1-input" className='p-3 flex flex-col'>
+            Atributo 1
+            <input
+              id="attr1-input"
+              data-testid="attr1-input"
+              type="number"
+              value={ cardAttr1 }
+              onChange={ onInputChange }
+              name="attr1"
+              min="0"
+              max="90"
+              className='m-2 rounded-lg text-center'
+            />
+          </label>
+          <label htmlFor="attr2-input" className='p-3 flex flex-col'>
+            Atributo 2
+            <input
+              id="attr2-input"
+              data-testid="attr2-input"
+              type="number"
+              value={ cardAttr2 }
+              onChange={ onInputChange }
+              name="attr2"
+              min="0"
+              max="90"
+              className='m-2 rounded-lg text-center'
+            />
+          </label>
+          <label htmlFor="attr3-input" className='p-3 flex flex-col'>
+            Atributo 3
+            <input
+              id="attr3-input"
+              data-testid="attr3-input"
+              type="number"
+              value={ cardAttr3 }
+              onChange={ onInputChange }
+              name="attr3"
+              min="0"
+              max="90"
+              className='m-2 rounded-lg text-center'
+            />
+          </label>
+        </div>
+        <label htmlFor="image-input" className='p-3 flex flex-col'>
           Imagem:
           <input
             id="image-input"
@@ -79,9 +86,10 @@ class Form extends React.Component {
             value={ cardImage }
             onChange={ onInputChange }
             name="image"
+            className='m-2 rounded-lg'
           />
         </label>
-        <label htmlFor="rare-input">
+        <label htmlFor="rare-input" className='p-3 flex flex-col'>
           Raridade:
           <select
             id="rare-input"
@@ -89,6 +97,7 @@ class Form extends React.Component {
             value={ cardRare }
             onChange={ onInputChange }
             name="rare"
+            className='m-2 rounded-lg text-center'
           >
             <option name="normal" value="normal">Normal</option>
             <option name="raro" value="raro">Raro</option>
@@ -98,7 +107,7 @@ class Form extends React.Component {
         {
           (!hasTrunfo)
             ? <SuperTrunfo cardTrunfo={ cardTrunfo } onInputChange={ onInputChange } />
-            : <span>Você já tem um Super Trunfo em seu baralho</span>
+            : <span className='m-2 rounded-lg text-center'>Você já tem um Super Trunfo em seu baralho</span>
         }
         <button
           id="save-button"
@@ -106,6 +115,7 @@ class Form extends React.Component {
           type="submit"
           onClick={ onSaveButtonClick }
           disabled={ isSaveButtonDisabled }
+          className='m-10 font-bold text-white bg-yellow-700 shadow-2xl rounded-3xl py-4'
         >
           Salvar
         </button>

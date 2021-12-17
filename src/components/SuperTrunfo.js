@@ -5,7 +5,7 @@ class SuperTrunfo extends React.Component {
   render() {
     const { cardTrunfo, onInputChange } = this.props;
     return (
-      <label htmlFor="trunfo-input">
+      <label htmlFor="trunfo-input" className='p-3 flex flex-col mx-auto'>
         Super Trunfo
         <input
           id="trunfo-input"
@@ -14,6 +14,7 @@ class SuperTrunfo extends React.Component {
           checked={ cardTrunfo }
           onChange={ onInputChange }
           name="trunfo"
+          className='my-2 text-center mx-auto'
         />
       </label>
     );
